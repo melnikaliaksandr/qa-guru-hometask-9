@@ -5,10 +5,13 @@ import org.aeonbits.owner.Config;
 @Config.Sources({ "classpath:config/driver.properties" })
 public interface DriverConfig extends Config {
 
+    @Key("url")
+    String getUrl();
+
     @Key("remote.web.user")
-    String remoteWebUser();
+    String getRemoteWebUser();
 
     @Key("remote.web.password")
-    String remoteWebPassword();
+    String getRemoteWebPassword();
 
 }

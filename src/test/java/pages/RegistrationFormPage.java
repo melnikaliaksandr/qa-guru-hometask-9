@@ -1,6 +1,8 @@
 package pages;
 
+import config.DriverConfig;
 import io.qameta.allure.Step;
+import org.aeonbits.owner.ConfigFactory;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -8,6 +10,8 @@ import static com.codeborne.selenide.Selenide.open;
 import static helpers.DataHelper.*;
 
 public class RegistrationFormPage {
+
+    static DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
     public String
             firstName = getRandomFirstName(),
@@ -21,7 +25,7 @@ public class RegistrationFormPage {
 
     @Step("Open students registration form")
     public RegistrationFormPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open(driverConfig.getUrl());
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         return this;
     }
